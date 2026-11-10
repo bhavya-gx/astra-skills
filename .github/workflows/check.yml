@@ -18,7 +18,7 @@ jobs:
         env:
           REELKIT_INTEGRATION: '1'
       - run: python -m reelkit demo --template all
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: demo-${{ matrix.os }}
           path: .local/demos/*/preview.mp4
