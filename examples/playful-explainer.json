@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "template": "playful-explainer",
+  "name": "Playful Explainer",
+  "description": "Warm colour, bold type, original icons, and small sound hooks.",
+  "source": "demo-source.mp4",
+  "hook": "This sounds complex. It is not.",
+  "subhead": "An idea explained through something familiar",
+  "beats": [
+    {
+      "title": "Think of it like this",
+      "text": "Start with an everyday comparison."
+    },
+    {
+      "title": "Here is the difference",
+      "text": "Explain what the comparison leaves out."
+    },
+    {
+      "title": "Try it here",
+      "text": "Give one concrete use case."
+    }
+  ],
+  "cta": "Save this for the next time it comes up.",
+  "accent": "#ffd065",
+  "title_y": 0.13,
+  "caption_y": 0.78,
+  "warmth": 0.65,
+  "tint": 0,
+  "tighten_pauses": false,
+  "minimum_pause": 0.5,
+  "threshold_db": -38,
+  "noise_reduction": true,
+  "sound_effects": true,
+  "auto_captions": false,
+  "captions_srt": "",
+  "keep_ranges": null,
+  "portrait_blur": false,
+  "insert": null,
+  "stage_starts": null
+}

@@ -1,0 +1,5 @@
+# Claude Code entry point
+
+This repository is Astra Skills: a reel-editing skill plus three talking-head templates and a local Python/FFmpeg renderer. The skill is at `.claude/skills/reel-edit/SKILL.md` (identical to `.agents/skills/reel-edit/SKILL.md`, which Codex reads). Read README.md for setup and `docs/project-format.md` for the executable project format.
+
+When the user pastes `prompts/first-edit.md` or asks to edit a clip, follow the skill. Use the repository virtual environment (`.venv/bin/python` or `.venv\Scripts\python.exe`); run `python3 bootstrap.py --check` first if it does not exist. Keep raw footage unchanged, keep working files in `.local/`, and never publish footage or renders anywhere without being told to.

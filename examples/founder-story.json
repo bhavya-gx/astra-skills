@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "template": "founder-story",
+  "name": "Founder Story",
+  "description": "An editorial story about a person, a problem, and a change.",
+  "source": "demo-source.mp4",
+  "hook": "She built the missing piece",
+  "subhead": "A founder story in three beats",
+  "beats": [
+    {
+      "title": "The problem",
+      "text": "One frustrating task kept coming back."
+    },
+    {
+      "title": "The change",
+      "text": "A simpler way to get it done."
+    },
+    {
+      "title": "Why it matters",
+      "text": "Less friction. More time for real work."
+    }
+  ],
+  "cta": "Save this story for your next idea.",
+  "accent": "#f5c479",
+  "title_y": 0.13,
+  "caption_y": 0.78,
+  "warmth": 0.65,
+  "tint": 0,
+  "tighten_pauses": false,
+  "minimum_pause": 0.5,
+  "threshold_db": -38,
+  "noise_reduction": true,
+  "sound_effects": false,
+  "auto_captions": false,
+  "captions_srt": "",
+  "keep_ranges": null,
+  "portrait_blur": false,
+  "insert": null,
+  "stage_starts": null
+}

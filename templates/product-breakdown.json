@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "template": "product-breakdown",
+  "name": "Product Breakdown",
+  "description": "Clean cards for a product launch, tool review, or useful feature.",
+  "source": "",
+  "hook": "One tool. Three useful shifts.",
+  "subhead": "A product breakdown without the jargon",
+  "beats": [
+    {
+      "title": "What it does",
+      "text": "Put the main benefit in one sentence."
+    },
+    {
+      "title": "How it works",
+      "text": "Show the smallest useful example."
+    },
+    {
+      "title": "Who it helps",
+      "text": "Name the person who will care most."
+    }
+  ],
+  "cta": "Would you use this? Tell me why.",
+  "accent": "#b8d9c8",
+  "title_y": 0.13,
+  "caption_y": 0.78,
+  "warmth": 0.65,
+  "tint": 0,
+  "tighten_pauses": true,
+  "minimum_pause": 0.5,
+  "threshold_db": -38,
+  "noise_reduction": true,
+  "sound_effects": true,
+  "auto_captions": true,
+  "captions_srt": "",
+  "keep_ranges": null,
+  "portrait_blur": false,
+  "insert": null,
+  "stage_starts": null
+}
