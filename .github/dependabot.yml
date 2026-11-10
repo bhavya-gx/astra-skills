@@ -4,7 +4,11 @@ updates:
     directory: /
     schedule:
       interval: weekly
+  # Security updates only for Python packages. The version ranges in the
+  # requirements files are deliberate: imageio-ffmpeg 0.8 ships FFmpeg 8,
+  # which removed -filter_complex_script and breaks the renderer.
   - package-ecosystem: pip
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 0
