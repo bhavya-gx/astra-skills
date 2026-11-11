@@ -1,0 +1,14 @@
+{
+  "name": "Pink B-roll Reel",
+  "width": 1080, "height": 1920, "fps": 30,
+  "text_colour_rgb_approximate": [237, 208, 222],
+  "text_bbox_normalized_approximate": [0.324, 0.408, 0.678, 0.595],
+  "text_lines": ["this audio on", "repeat when the", "imposter", "syndrome hits", "too hard", "#whataprivilege"],
+  "lettering": "Use the locally supplied original raster title.png; no font substitution.",
+  "audio": "Local audio.m4a from time zero, trimmed to the sum of shot frames / 30.",
+  "shots": [
+    {"start": 0.12, "frames": 157, "zoom": 1.18, "crop_x": 0.10, "crop_y": "bottom", "luma": 0.92},
+    {"start": 0.40, "frames": 124, "zoom": 1.16, "crop_x": 0.04, "crop_y": "bottom", "luma": 0.90},
+    {"start": 0.50, "frames": 97, "zoom": 1.28, "crop_x": 0.07, "crop_y": "bottom", "luma": 0.93}
+  ]
+}
