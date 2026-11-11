@@ -20,6 +20,18 @@ The full version with the editorial rules is [prompts/first-edit.md](prompts/fir
 
 Astra and Codex need your own access. The model is not included and is not open source. Everything else here is.
 
+## Pale Yellow Reel skill
+
+For a single lifestyle clip with a fixed title, use [pale-yellow-reel](.agents/skills/pale-yellow-reel/SKILL.md). It saves the approved four-second, 30 fps layout: pale-yellow lettering, fixed text placement and a lower, wider crop. It provides both 540×960 previews and 1080×1920 exports, with explicit source/output timing and validation.
+
+```text
+Use the pale-yellow-reel skill to edit my portrait clip.
+Source: [MY VIDEO PATH]
+Local template assets: [FOLDER WITH title.png AND audio.m4a]
+```
+
+The exact lettering and audio stay in your local asset folder; public copies contain the style settings and renderer. An installed personal skill can keep the assets beside its settings. The [composition diagram](assets/previews/pale-yellow-reel-layout.png) illustrates the layout without using personal footage. This skill has its own render command and does not change the editor's three talking-head templates.
+
 ## No AI account? Use the editor
 
 1. Install [Python 3.12 or newer](https://www.python.org/downloads/) if you do not already have it.
