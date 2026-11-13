@@ -74,6 +74,10 @@ The [walkthrough](docs/walkthrough.md) is the real review loop: inspect the sour
 
 The draft opens in your browser with a waveform and its captions. Click a moment or drag a range, type what is wrong, press Enter. Notes save next to the render as `preview.review.json`, with the words you were hearing. Paste the "Work through my review notes" prompt from [prompts/revisions.md](prompts/revisions.md) and the assistant fixes each note, writes a one-line reply under it and marks it done; the page refreshes by itself. `python -m reelkit review FOLDER` lists every render under a folder with its open-note count, and `--print` gives the notes as text. Nothing is uploaded.
 
+## The rules behind the edits
+
+[docs/editing-rules.md](docs/editing-rules.md) is the short list the skill applies before a cut and before a delivery: first word by frame 6, something on screen every 1.5 to 2 s, captions one to three words landing two frames early and never on the face, one type family in two weights, keep the camera colour, music 10 dB under the voice, preview before master, deliver the cut list with the render. Each rule came from a draft that was sent back. Copy it, cross out what is not you, and the skill follows yours.
+
 ## Check the edit before you post
 
 ```sh

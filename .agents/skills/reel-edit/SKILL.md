@@ -5,6 +5,8 @@ description: Edit talking-head reels with this repository's Founder Story, Produ
 
 Use the repository root containing `bootstrap.py`. Read `docs/project-format.md` for the executable configuration and `docs/walkthrough.md` when planning an edit. The toolkit is self-contained; no private skills or prior chat history are required.
 
+Read `docs/editing-rules.md` before planning a cut and again before delivering: pace, captions, framing, sound and the delivery checklist. Where the renderer does not cover a rule, apply it in the project settings or say what it would take.
+
 Inspect actual source properties before planning. Use a transcript to distinguish false starts and duplicate takes from intentional repetition. Silence detection alone does not justify removing quiet speech. Keep raw files unchanged.
 
 Create a project from the chosen template with `python -m reelkit new --template NAME --source FILE --out PROJECT.json`, using the repository virtual-environment Python. Fill the titles from the spoken content; do not invent subtitle timing from a script. Transcription is local and may need an initial public model download.

@@ -10,6 +10,8 @@ Launch the local editor, choose a style, and add the video. Replace the hook, th
 
 Render a preview. Long-pause detection uses a conservative threshold and retains short guards around speech; it is not a word-aware editor unless speech timestamps are available. Inspect each audible join. A quiet consonant should survive even when a waveform looks nearly silent.
 
+Before the first render, read `docs/editing-rules.md` once. It is the list the skill works from, and it is the list to edit when your own taste differs.
+
 ## 3. Review with a purpose
 
 Watch once for the message. Listen once for clipped words, clicks, awkward gaps, or repeated takes. Check spelling, especially names and numbers. Check whether text overlaps your face or the platform’s controls. Check the beginning, middle, and ending rather than judging colour from a single frame.
