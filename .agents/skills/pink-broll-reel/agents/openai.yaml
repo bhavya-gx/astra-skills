@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pink B-roll Reel"
+  short_description: "Three-shot reel with fixed pink lettering"
+  default_prompt: "Use $pink-broll-reel to edit these three clips with the approved pink lettering, soundtrack and 12.6-second ending."

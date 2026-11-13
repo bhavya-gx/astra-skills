@@ -66,6 +66,18 @@ Default card timing splits the edit into five even sections. Phrase-specific tim
 
 The [walkthrough](docs/walkthrough.md) is the real review loop: inspect the source, transcribe, cut in source time, add graphics, match colour across clips, revise with timestamps, export, keep the project. Cuts are expressed in original source time and graphics in edited output time, so a revision never loses track of where a moment came from.
 
+## Pink B-roll Reel skill
+
+Use [pink-broll-reel](.agents/skills/pink-broll-reel/SKILL.md) for the approved three-shot lifestyle montage: fixed pink lettering, reference audio and a 12.6-second ending. It provides 540×960 previews and 1080×1920 masters, explicit source/output timing and configurable crops. See the [layout diagram](assets/previews/pink-broll-reel-layout.png).
+
+```text
+Use the pink-broll-reel skill with these three portrait clips, in order.
+Sources: [OPENING CLIP], [SECOND CLIP], [CLOSING CLIP]
+Local assets: [FOLDER WITH title.png AND audio.m4a]
+```
+
+The public skill includes settings and a standalone renderer. Exact lettering, reference audio and personal footage stay local. It does not change the three talking-head templates below.
+
 ## For developers
 
 ```sh
