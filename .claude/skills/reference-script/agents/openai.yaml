@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reference Script"
+  short_description: "Your version of a reel that works, beat for beat, from your own facts"
+  default_prompt: "Use $reference-script to write my version of this reference reel from voice/me.md, as a comparison table."

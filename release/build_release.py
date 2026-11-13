@@ -8,7 +8,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 ROOT_FILES={'README.md','SECURITY.md','START-HERE.html','LICENSE','THIRD_PARTY_NOTICES.md','AGENTS.md','CLAUDE.md','CONTRIBUTING.md','.gitignore','.gitattributes','bootstrap.py','Start-Mac.command','Start-Windows.bat','start-linux.sh','requirements.txt','requirements-captions.txt','requirements-portrait.txt'}
-FOLDERS={'reelkit','.claude','assets','templates','scripts','docs','prompts','.agents','.github','tests','examples','release'}
+FOLDERS={'reelkit','.claude','assets','templates','scripts','docs','prompts','.agents','.github','tests','examples','release','voice'}
 EXCLUDED={'__pycache__','.venv','.cache','.local','.git','dist'}
 TEXT={'.py','.md','.html','.json','.txt','.sh','.command','.bat','.yml','.yaml'}
 
