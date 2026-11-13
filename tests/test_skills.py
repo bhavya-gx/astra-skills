@@ -15,6 +15,18 @@ class SkillTests(unittest.TestCase):
         self.assertIn('\ndescription: ',text.split('---')[1])
     def test_first_edit_prompt_names_the_skill(self):
         self.assertIn('reel-edit skill',(ROOT/'prompts/first-edit.md').read_text(encoding='utf-8'))
+    def test_reference_script_skill_copies_match_and_have_their_files(self):
+        codex=ROOT/'.agents/skills/reference-script';claude=ROOT/'.claude/skills/reference-script'
+        for relative in ['SKILL.md','agents/openai.yaml']:
+            with self.subTest(file=relative):
+                self.assertEqual((codex/relative).read_bytes(),(claude/relative).read_bytes())
+        text=(codex/'SKILL.md').read_text(encoding='utf-8')
+        self.assertTrue(text.startswith('---\nname: reference-script\n'))
+        self.assertIn('[CHECK]',text)
+        self.assertIn('reference-script skill',(ROOT/'prompts/reference-script.md').read_text(encoding='utf-8'))
+        for name in ['facts-interview.md','example-facts.md']:
+            self.assertTrue((ROOT/'voice'/name).is_file())
+        self.assertIn('fictional',(ROOT/'voice/example-facts.md').read_text(encoding='utf-8'))
     def test_pale_yellow_skill_packages_match(self):
         codex=ROOT/'.agents/skills/pale-yellow-reel'
         claude=ROOT/'.claude/skills/pale-yellow-reel'

@@ -32,6 +32,19 @@ Local template assets: [FOLDER WITH title.png AND audio.m4a]
 
 The exact lettering and audio stay in your local asset folder; public copies contain the style settings and renderer. An installed personal skill can keep the assets beside its settings. The [composition diagram](assets/previews/pale-yellow-reel-layout.png) illustrates the layout without using personal footage. This skill has its own render command and does not change the editor's three talking-head templates.
 
+## Script from a reel that already works
+
+Before you record, hand the assistant a reel you admire and your own facts:
+
+```text
+Use the reference-script skill in this repository to write my version of a reel.
+
+Reference: [LINK, FILE PATH, OR PASTED TRANSCRIPT]
+My facts: voice/[MY NAME].md
+```
+
+It logs the reference beat by beat (transcript, hook, B-roll, captions, pace), then writes your version beside it in one table: time, their line, your line, the visual, the on-screen text. Every number, name and goal comes from your facts file, written once from [voice/facts-interview.md](voice/facts-interview.md); anything missing is marked `[CHECK]` instead of invented. You revise line by line, record, and the `reel-edit` skill takes it from there. The full prompt is [prompts/reference-script.md](prompts/reference-script.md); [voice/example-facts.md](voice/example-facts.md) is a filled example for a fictional founder.
+
 ## No AI account? Use the editor
 
 1. Install [Python 3.12 or newer](https://www.python.org/downloads/) if you do not already have it.
