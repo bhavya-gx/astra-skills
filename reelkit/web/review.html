@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Astra Skills · __TITLE__</title>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Video Skills · __TITLE__</title>
 <style>
 @font-face{font-family:Inter;src:url('/assets/fonts/InterTight.ttf')}
 :root{--ink:#282820;--muted:#6e7167;--paper:#f5f3ea;--line:#dcded1;--green:#344f3d;--lime:#d8eea7;--blue:#2f5fa8;--amber:#b8791a}
@@ -31,7 +31,7 @@ aside .panel{position:sticky;top:20px}.notes-head{display:flex;justify-content:s
 footer{max-width:1280px;margin:auto;padding:22px 36px 35px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
 @media(max-width:900px){.review{display:block}aside .panel{position:static;margin-top:18px}header,main,footer{padding-left:18px;padding-right:18px}}
 </style></head>
-<body><header><div class="brand"><a href="/">ASTRA <span>/ Skills · Review</span></a></div><div class="pill" id="stamps">LOCAL REVIEW</div></header>
+<body><header><div class="brand"><a href="/">VIDEO <span>/ Skills · Review</span></a></div><div class="pill" id="stamps">LOCAL REVIEW</div></header>
 <main>
 <section id="libraryView" hidden><h1>Renders</h1><p id="libCount"></p><div class="panel library" id="library"></div></section>
 <section id="reviewView" hidden><div class="review"><div>
@@ -48,7 +48,7 @@ const INFO=__INFO__,TOKEN='__TOKEN__';const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 const fmt=s=>`${Math.floor(s/60)}:${(s%60).toFixed(1).padStart(4,'0')}`;
 if(INFO.library)library();else review();
-function library(){$('libraryView').hidden=false;document.title='Astra Skills · Reviews';
+function library(){$('libraryView').hidden=false;document.title='Video Skills · Reviews';
   const items=INFO.library;$('libCount').textContent=items.length?`${items.length} render${items.length>1?'s':''} under ${INFO.root}, newest first.`:'No renders found in this folder yet.';
   $('library').innerHTML=items.map(r=>`<article><div><strong>${esc(r.name)}</strong><small>${esc(r.folder||'.')} · rendered ${esc(r.rendered)}${r.saved?`, notes saved ${esc(r.saved)}`:''}</small></div>
     <span>${r.open+r.done?`<span class="tag ${r.open?'open':'done'}">${r.open} open, ${r.done} done</span>`:'<small>no notes</small>'}</span>

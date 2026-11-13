@@ -32,14 +32,14 @@ def collect():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,default=ROOT/'dist/astra-skills-v0.1.0.zip');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,default=ROOT/'dist/video-skills-v0.1.0.zip');args=parser.parse_args()
     files=collect()
     manifest={'version':'0.1.0','files':[{'path':str(p.relative_to(ROOT)).replace('\\','/'),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}
     manifest_path=ROOT/'release/MANIFEST.json';manifest_path.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(args.out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p in files+[manifest_path]:
-            name='astra-skills/'+str(p.relative_to(ROOT)).replace('\\','/')
+            name='video-skills/'+str(p.relative_to(ROOT)).replace('\\','/')
             info=zipfile.ZipInfo.from_file(p,name);info.create_system=3
             info.external_attr=((0o100755 if p.suffix in ['.command','.sh'] else 0o100644)<<16)
             z.writestr(info,p.read_bytes(),compress_type=zipfile.ZIP_DEFLATED,compresslevel=6)

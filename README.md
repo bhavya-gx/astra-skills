@@ -1,12 +1,12 @@
-# Astra Skills
+# Video Skills
 
-**Edit a talking-head reel in one prompt.** This is my GPT-6 Astra editing workflow, packaged as a skill your coding assistant can run, plus three ready-made reel templates with fill-in scripts and a local editor that does the rendering.
+**Edit a talking-head reel in one prompt.** This is my reel-editing workflow, packaged as a skill for Codex with GPT-6 Astra and for Claude Code, plus three ready-made reel templates with fill-in scripts and a local editor that does the rendering.
 
 ![The three templates](assets/previews/template-gallery.jpg)
 
 ## The one prompt
 
-Use this repository as a template (the green **Use this template** button, or [download the latest release](https://github.com/bhavya-gx/astra-skills/releases/latest)). Open the folder in Codex with GPT-6 Astra, or in Claude Code, and paste:
+Use this repository as a template (the green **Use this template** button, or [download the latest release](https://github.com/bhavya-gx/video-skills/releases/latest)). Open the folder in Codex with GPT-6 Astra, or in Claude Code, and paste:
 
 ```text
 Use the reel-edit skill in this repository to edit my talking-head clip.
@@ -18,7 +18,7 @@ Optional style reference: [REFERENCE PATH OR NONE]
 
 The full version with the editorial rules is [prompts/first-edit.md](prompts/first-edit.md). The skill lives in `.agents/skills/reel-edit/SKILL.md` (Codex) and `.claude/skills/reel-edit/SKILL.md` (Claude Code). Both copies are identical. The assistant inspects your footage, transcribes it locally, cuts long pauses and false starts, places the cards on the phrases you actually said, grades the colour, renders a preview, and hands you the editable project. Revise with timestamps using [prompts/revisions.md](prompts/revisions.md).
 
-Astra and Codex need your own access. The model is not included and is not open source. Everything else here is.
+Astra, Codex and Claude Code need your own access. The model is not included and is not open source. Everything else here is.
 
 ## Pale Yellow Reel skill
 

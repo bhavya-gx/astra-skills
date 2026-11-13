@@ -260,7 +260,7 @@ def make_review_server(target, port=0):
 def serve_review(target, port=0, open_browser=True):
     server = make_review_server(target, port)
     url = f"http://127.0.0.1:{server.server_port}"
-    print(f"Astra Skills review · {url}\nNotes save next to each render as <render>.review.json. Press Ctrl+C to stop.", flush=True)
+    print(f"Video Skills review · {url}\nNotes save next to each render as <render>.review.json. Press Ctrl+C to stop.", flush=True)
     if open_browser:
         webbrowser.open(url)
     try:
