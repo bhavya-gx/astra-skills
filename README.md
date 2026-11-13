@@ -74,6 +74,14 @@ The [walkthrough](docs/walkthrough.md) is the real review loop: inspect the sour
 
 The draft opens in your browser with a waveform and its captions. Click a moment or drag a range, type what is wrong, press Enter. Notes save next to the render as `preview.review.json`, with the words you were hearing. Paste the "Work through my review notes" prompt from [prompts/revisions.md](prompts/revisions.md) and the assistant fixes each note, writes a one-line reply under it and marks it done; the page refreshes by itself. `python -m reelkit review FOLDER` lists every render under a folder with its open-note count, and `--print` gives the notes as text. Nothing is uploaded.
 
+## Check the edit before you post
+
+```sh
+.venv/bin/python -m reelkit check my-preview/preview.mp4
+```
+
+Prints PASS or FAIL for the faults a reviewer keeps catching: a pause left in the cut (over 0.5 s), a frozen picture, loudness off target (integrated −16 LUFS, true peak under −1 dBTP), a phrase said twice across a cut (a retake that survived), and loud stretches with no caption (speech the captions missed, or music). It picks up `captions.srt` and `edit-decisions.json` beside the render on its own; `--captions`, `--edl`, `--max-pause`, `--target-lufs` and `--json` adjust it. The skill runs it on every draft before handing the video over. It needs only the bundled FFmpeg.
+
 ## Pink B-roll Reel skill
 
 Use [pink-broll-reel](.agents/skills/pink-broll-reel/SKILL.md) for the approved three-shot lifestyle montage: fixed pink lettering, reference audio and a 12.6-second ending. It provides 540×960 previews and 1080×1920 masters, explicit source/output timing and configurable crops. See the [layout diagram](assets/previews/pink-broll-reel-layout.png).
