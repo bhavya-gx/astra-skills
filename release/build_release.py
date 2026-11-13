@@ -32,9 +32,9 @@ def collect():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,default=ROOT/'dist/video-skills-v0.1.0.zip');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,default=ROOT/'dist/video-skills-v0.2.0.zip');args=parser.parse_args()
     files=collect()
-    manifest={'version':'0.1.0','files':[{'path':str(p.relative_to(ROOT)).replace('\\','/'),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}
+    manifest={'version':'0.2.0','files':[{'path':str(p.relative_to(ROOT)).replace('\\','/'),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}
     manifest_path=ROOT/'release/MANIFEST.json';manifest_path.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(args.out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
