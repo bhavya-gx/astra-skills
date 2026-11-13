@@ -18,9 +18,6 @@ def main():
     review=commands.add_parser("review",help="Open a render in the browser and leave timestamped notes")
     review.add_argument("target",help="A rendered video, or a folder of renders");review.add_argument("--port",type=int,default=0);review.add_argument("--no-browser",action="store_true")
     review.add_argument("--print",action="store_true",dest="print_notes",help="Print the open notes as text and exit");review.add_argument("--all",action="store_true",help="With --print, include notes marked done")
-    check=commands.add_parser("check",help="Check a finished reel for pauses, freezes, loudness and repeated takes")
-    check.add_argument("render");check.add_argument("--captions",help="Edited-time SRT (default: captions.srt beside the render)");check.add_argument("--edl",help="edit-decisions.json (default: beside the render)")
-    check.add_argument("--max-pause",type=float,default=.5);check.add_argument("--target-lufs",type=float,default=-16);check.add_argument("--tolerance",type=float,default=2);check.add_argument("--max-peak",type=float,default=-1);check.add_argument("--json",action="store_true",dest="as_json")
     demo=commands.add_parser("demo",help="Render illustrated previews without your own footage")
     demo.add_argument("--template",default="all");demo.add_argument("--out",default=str(ROOT/".local/demos"))
     args=parser.parse_args()
@@ -31,11 +28,6 @@ def main():
         from .review import format_notes,serve_review
         if args.print_notes:print(format_notes(args.target,args.all))
         else:serve_review(args.target,args.port,not args.no_browser)
-    elif args.command=="check":
-        from .check import check,format_report
-        report=check(args.render,args.captions,args.edl,args.max_pause,args.target_lufs,args.tolerance,args.max_peak)
-        print(json.dumps(report,indent=2) if args.as_json else format_report(report))
-        if not report["ok"]:raise SystemExit(1)
     elif args.command=="doctor":
         print(json.dumps(dict(ffmpeg=ffmpeg(),captions=bool(importlib.util.find_spec("faster_whisper")),portrait=bool(importlib.util.find_spec("onnxruntime"))),indent=2))
     else:
