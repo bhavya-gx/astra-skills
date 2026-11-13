@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pale Yellow Reel"
+  short_description: "Four-second reel with fixed pale-yellow lettering"
+  default_prompt: "Use $pale-yellow-reel to edit this clip with the approved four-second framing, lettering, and audio."
