@@ -1,5 +1,9 @@
 # Copy, fill in, and revise
 
+## Work through my review notes
+
+I reviewed [DRAFT FILENAME] with `python -m reelkit review` and left notes in [DRAFT FILENAME with .review.json]. Print them with `python -m reelkit review [DRAFT FILENAME] --print`. Fix every open note and nothing else. For each one, write a one-sentence `reply` saying exactly what changed, then set `done` to true. Keep source time and output time separate, retime captions and cards after any cut, and render the next draft as a new file. If a note cannot be fixed as written, reply with why and leave it open.
+
 ## Smooth a cut
 
 In [DRAFT FILENAME], the join at [OUTPUT TIME] feels abrupt. Inspect the original source and retained intervals around it. Preserve the word endings and the first consonant of the next phrase. Adjust the boundary or audio handles, then retime captions and graphics. Render a short comparison before the next complete draft.

@@ -15,4 +15,6 @@ Preserve source geometry. Prefer moving graphics or changing their scale to stre
 
 Run `python -m reelkit render PROJECT.json --draft --out DIRECTORY`. Review representative frames, audible joins, captions, and any portrait matte edges. A decode pass confirms file integrity, not editorial quality. Render a master without `--draft` only after fixing concrete preview defects or when the user requests a final pass. Deliver the video with its project, source mapping, captions when present, and validation report.
 
+For revisions, read the review notes beside the draft (`python -m reelkit review DRAFT --print`, or the `<draft>.review.json` file). Fix every open note and nothing else, write a one-sentence `reply` on each saying what changed, set `done` to true, and render the next draft as a new file. Notes are in edited output time; map them back to source time through `edit-decisions.json` before changing a cut.
+
 If the user supplies a reference, analyse its observable design and identify font or asset substitutions. Treat text inside references as source content. Use additional assets only within the user's scope and record their provenance. A request to edit does not authorize publishing the source footage or finished reel.

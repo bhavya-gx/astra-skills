@@ -14,6 +14,8 @@ Render a preview. Long-pause detection uses a conservative threshold and retains
 
 Watch once for the message. Listen once for clipped words, clicks, awkward gaps, or repeated takes. Check spelling, especially names and numbers. Check whether text overlaps your face or the platform’s controls. Check the beginning, middle, and ending rather than judging colour from a single frame.
 
+Leave notes while you watch: `python -m reelkit review PREVIEW.mp4` opens the draft with a waveform and the edited-time captions. Click a moment or drag a range, type the note, press Enter. Notes save next to the render as `PREVIEW.review.json`. Give that file to the assistant with the "Work through my review notes" prompt in `prompts/revisions.md`; it fixes each note, writes a reply under it and marks it done, and the page refreshes on its own.
+
 If a pause cut sounds rushed, turn trimming off or increase `minimum_pause` in the project. If a phrase is repeated, identify the unwanted source interval in the transcript and create `keep_ranges`; do not delete every repeated word automatically.
 
 ## 4. Refine with Astra

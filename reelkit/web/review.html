@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Astra Skills · __TITLE__</title>
+<style>
+@font-face{font-family:Inter;src:url('/assets/fonts/InterTight.ttf')}
+:root{--ink:#282820;--muted:#6e7167;--paper:#f5f3ea;--line:#dcded1;--green:#344f3d;--lime:#d8eea7;--blue:#2f5fa8;--amber:#b8791a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px}
+button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:default}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #739851;outline-offset:3px}
+header{max-width:1280px;margin:auto;padding:22px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line)}
+.brand{font-weight:750;font-size:19px;letter-spacing:-.4px;white-space:nowrap}.brand span{font-weight:450;color:var(--muted)}
+.brand a{color:inherit;text-decoration:none}.pill{border:1px solid var(--line);padding:7px 12px;border-radius:30px;font-size:12px;background:#fff9;white-space:nowrap}
+main{max-width:1280px;margin:auto;padding:30px 36px 60px}h1{font-weight:700;letter-spacing:-.5px;font-size:26px;margin:0 0 6px}p,.hint{color:var(--muted);line-height:1.5}.hint{font-size:12px;margin:6px 0 0}
+.panel{background:#fff9;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+.tag{display:inline-block;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:600;background:#e6ecd9;color:var(--green)}.tag.open{background:#f7e8c8;color:var(--amber)}.tag.progress{background:#dfe8f7;color:var(--blue)}.tag.done{background:#e6ecd9;color:var(--green)}
+.library article{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:18px;align-items:center;padding:12px 4px;border-top:1px solid var(--line)}.library article:first-child{border-top:0}
+.library strong{display:block;font-size:16px}.library small{color:var(--muted)}.library a.open{color:var(--green);font-weight:650;text-decoration:none;white-space:nowrap}
+.review{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px}
+video{width:100%;max-height:56vh;border-radius:16px;background:#242322;display:block}
+#captions{min-height:24px;margin:12px 0 10px;color:var(--muted);line-height:1.5}#captions b{color:var(--ink)}
+.wavebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fffdf6}canvas{display:block;height:120px;cursor:crosshair}
+#sel{font-variant-numeric:tabular-nums;color:var(--blue);font-size:14px;margin:10px 0}
+.row{display:flex;gap:10px}input[type=text]{flex:1;min-width:0;padding:12px;border:1px solid #cdd1c5;border-radius:10px;background:white;color:var(--ink)}
+.primary{background:var(--green);color:white;border:1px solid var(--green);padding:12px 16px;border-radius:10px;font-weight:650;white-space:nowrap}
+.keys{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px;font-size:12px;color:var(--muted)}kbd{border:1px solid var(--line);background:#fff;border-radius:4px;padding:1px 6px;font-family:ui-monospace,monospace;font-size:11px;color:var(--ink)}
+aside .panel{position:sticky;top:20px}.notes-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}.notes-head h2{margin:0;font-size:17px}
+.note{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;cursor:pointer;background:#fff}.note:hover{border-color:var(--green)}.note.done{opacity:.6}
+.note .when{font-variant-numeric:tabular-nums;color:var(--blue);font-size:12px;font-family:ui-monospace,monospace}.note .top{display:flex;gap:8px;align-items:center;font-size:12px}
+.note .del{margin-left:auto;background:none;border:0;color:var(--muted);font-size:12px}.note .del:hover{color:#a72f29}.note .text{margin-top:6px}.note .words{margin-top:4px;font-size:12px;color:var(--muted)}
+.note .reply{margin-top:8px;border-left:3px solid var(--green);background:#eef3e5;padding:8px 10px;border-radius:6px;font-size:14px}
+footer{max-width:1280px;margin:auto;padding:22px 36px 35px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+@media(max-width:900px){.review{display:block}aside .panel{position:static;margin-top:18px}header,main,footer{padding-left:18px;padding-right:18px}}
+</style></head>
+<body><header><div class="brand"><a href="/">ASTRA <span>/ Skills · Review</span></a></div><div class="pill" id="stamps">LOCAL REVIEW</div></header>
+<main>
+<section id="libraryView" hidden><h1>Renders</h1><p id="libCount"></p><div class="panel library" id="library"></div></section>
+<section id="reviewView" hidden><div class="review"><div>
+<h1 id="title"></h1><p id="folder" class="hint"></p>
+<div class="panel"><video id="v" controls playsinline></video><div id="captions"></div>
+<div class="wavebox" id="wavebox"><canvas id="wave"></canvas></div>
+<div id="sel">Click the waveform for a moment, drag for a range, then type a note.</div>
+<div class="row"><input id="text" type="text" placeholder="Note, for example: repeated take, keep the second one" maxlength="2000"><button id="add" class="primary">Add note</button></div>
+<div class="keys"><span><kbd>space</kbd> <kbd>K</kbd> play / pause</span><span><kbd>J</kbd> <kbd>L</kbd> back / forward 5 s</span><span><kbd>←</kbd> <kbd>→</kbd> 1 s (<kbd>shift</kbd> 0.2 s)</span><span><kbd>,</kbd> <kbd>.</kbd> one frame</span><span><kbd>M</kbd> note here</span><span><kbd>I</kbd> <kbd>O</kbd> range in / out</span><span><kbd>[</kbd> <kbd>]</kbd> previous / next note</span><span><kbd>Enter</kbd> save, <kbd>Esc</kbd> leave the box</span><span><kbd>+</kbd> <kbd>-</kbd> zoom waveform</span></div></div>
+</div><aside><div class="panel"><div class="notes-head"><h2>Notes</h2><span id="count" class="hint"></span></div><div id="list"></div><p class="hint">Notes save next to the render as a .review.json file. Give that file to the assistant with the revisions prompt; it answers each note in place.</p></div></aside></div></section>
+</main><footer>Everything stays on this computer. Nothing is uploaded or sent.</footer>
+<script>
+const INFO=__INFO__,TOKEN='__TOKEN__';const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const fmt=s=>`${Math.floor(s/60)}:${(s%60).toFixed(1).padStart(4,'0')}`;
+if(INFO.library)library();else review();
+function library(){$('libraryView').hidden=false;document.title='Astra Skills · Reviews';
+  const items=INFO.library;$('libCount').textContent=items.length?`${items.length} render${items.length>1?'s':''} under ${INFO.root}, newest first.`:'No renders found in this folder yet.';
+  $('library').innerHTML=items.map(r=>`<article><div><strong>${esc(r.name)}</strong><small>${esc(r.folder||'.')} · rendered ${esc(r.rendered)}${r.saved?`, notes saved ${esc(r.saved)}`:''}</small></div>
+    <span>${r.open+r.done?`<span class="tag ${r.open?'open':'done'}">${r.open} open, ${r.done} done</span>`:'<small>no notes</small>'}</span>
+    <a class="open" href="/review?file=${encodeURIComponent(r.file)}">Review →</a></article>`).join('')||'<p>Render a preview first, then come back here.</p>';}
+async function review(){$('reviewView').hidden=false;const q='?file='+encodeURIComponent(INFO.file);
+  $('title').textContent=INFO.name;$('folder').textContent=INFO.folder?`in ${INFO.folder}`:'';
+  const v=$('v');v.src='/video'+q;
+  const stamp=saved=>$('stamps').textContent=`rendered ${INFO.rendered}${saved?` · notes saved ${saved}`:''}`;stamp(INFO.saved);
+  let notes=await (await fetch('/notes'+q)).json();const cues=await (await fetch('/captions'+q)).json();const wave=await (await fetch('/peaks'+q)).json();
+  const wordsIn=(a,b)=>cues.filter(c=>c.end>a-0.3&&c.start<b+0.3).map(c=>c.text).join(' ');
+  v.ontimeupdate=()=>{const t=v.currentTime;$('captions').innerHTML=cues.filter(c=>c.start<t+2&&c.end>t-2).map(c=>c.start<=t&&c.end>=t?`<b>${esc(c.text)}</b>`:esc(c.text)).join(' ')||'';draw();};
+  // Waveform on a canvas: peaks from the server, no library needed.
+  const canvas=$('wave'),box=$('wavebox');let zoom=1,pick=null,dragFrom=null;
+  const duration=()=>v.duration&&isFinite(v.duration)?v.duration:wave.duration||1;
+  const size=()=>{const w=Math.max(box.clientWidth,Math.round(box.clientWidth*zoom));canvas.width=w*devicePixelRatio;canvas.height=120*devicePixelRatio;canvas.style.width=w+'px';draw();};
+  const x2t=x=>x/canvas.clientWidth*duration(),t2x=t=>t/duration()*canvas.clientWidth;
+  function draw(){const g=canvas.getContext('2d');const W=canvas.width,H=canvas.height,r=devicePixelRatio;g.clearRect(0,0,W,H);
+    const d=duration();g.fillStyle='#b9c6a6';const n=wave.peaks.length;for(let i=0;i<n;i++){const x=i/n*W,w=Math.max(1,W/n),h=Math.max(1,wave.peaks[i]*H*.9);g.fillRect(x,(H-h)/2,w,h);}
+    notes.forEach(nt=>{g.fillStyle=nt.done?'rgba(120,120,120,.18)':'rgba(47,95,168,.22)';const a=nt.start/d*W,b=Math.max(nt.end,nt.start+.15)/d*W;g.fillRect(a,0,b-a,H);});
+    if(pick){g.fillStyle='rgba(184,121,26,.28)';const a=pick.start/d*W,b=Math.max(pick.end,pick.start+.1)/d*W;g.fillRect(a,0,b-a,H);}
+    g.fillStyle='#282820';g.fillRect(v.currentTime/d*W-r,0,2*r,H);}
+  const show=()=>{$('sel').textContent=pick?`${fmt(pick.start)}${pick.end>pick.start+0.2?' to '+fmt(pick.end):''}  "${wordsIn(pick.start,pick.end)}"`:'';$('text').focus();draw();};
+  canvas.onmousedown=e=>{dragFrom=x2t(e.offsetX);};
+  canvas.onmousemove=e=>{if(dragFrom===null)return;const t=x2t(e.offsetX);pick={start:Math.min(dragFrom,t),end:Math.max(dragFrom,t)};draw();};
+  canvas.onmouseup=e=>{const t=x2t(e.offsetX);if(dragFrom!==null&&Math.abs(t-dragFrom)>0.15){pick={start:Math.min(dragFrom,t),end:Math.max(dragFrom,t)};}else{pick={start:t,end:t};v.currentTime=t;}dragFrom=null;show();};
+  canvas.onmouseleave=()=>{dragFrom=null;};
+  const save=async()=>{const r=await (await fetch('/notes'+q,{method:'POST',headers:{'X-Reel-Token':TOKEN,'Content-Type':'application/json'},body:JSON.stringify(notes)})).json();if(r.error){$('sel').textContent=r.error;return;}notes=r.notes;stamp(r.saved);render();};
+  const label=n=>n.done?['done','done']:n.reply?['in progress','progress']:['open','open'];
+  function render(){const open=notes.filter(n=>!n.done).length;$('count').textContent=notes.length?`${open} open, ${notes.length-open} done`:'';
+    $('list').innerHTML=notes.map((n,i)=>{const [text,cls]=label(n);return `<div class="note ${n.done?'done':''}" data-i="${i}"><div class="top"><span class="when">${fmt(n.start)}${n.end>n.start+0.2?' to '+fmt(n.end):''}</span><span class="tag ${cls}">${text}</span><button class="del" data-del="${i}">delete</button></div>
+      <div class="text">${esc(n.note)}</div>${n.words?`<div class="words">"${esc(n.words)}"</div>`:''}${n.reply?`<div class="reply">${esc(n.reply)}</div>`:''}</div>`;}).join('')||'<p class="hint">No notes yet. Click the waveform or press M, type, then Enter.</p>';draw();}
+  const add=()=>{const text=$('text').value.trim();if(!text||!pick)return;notes.push({start:+pick.start.toFixed(2),end:+pick.end.toFixed(2),note:text,words:wordsIn(pick.start,pick.end),done:false});$('text').value='';save();};
+  $('add').onclick=add;$('text').onkeydown=e=>{if(e.key==='Enter')add();if(e.key==='Escape'){$('text').blur();e.stopPropagation();}};
+  $('list').onclick=e=>{const del=e.target.dataset.del;if(del!==undefined){notes.splice(+del,1);save();return;}const card=e.target.closest('.note');if(card){v.currentTime=Math.max(0,notes[+card.dataset.i].start-1);v.play();}};
+  const seek=d=>{v.currentTime=Math.max(0,Math.min(duration(),v.currentTime+d));};
+  document.addEventListener('keydown',e=>{if(document.activeElement===$('text')||e.metaKey||e.ctrlKey)return;const k=e.key.toLowerCase(),t=v.currentTime;
+    const act={' ':()=>v.paused?v.play():v.pause(),k:()=>v.paused?v.play():v.pause(),j:()=>seek(-5),l:()=>seek(5),arrowleft:()=>seek(e.shiftKey?-0.2:-1),arrowright:()=>seek(e.shiftKey?0.2:1),
+      ',':()=>{v.pause();seek(-1/30);},'.':()=>{v.pause();seek(1/30);},m:()=>{v.pause();pick={start:t,end:t};show();},n:()=>{v.pause();pick={start:t,end:t};show();},
+      i:()=>{pick={start:t,end:Math.max(t,pick?.end??t)};$('sel').textContent=`in ${fmt(t)}, press O for out`;draw();},o:()=>{v.pause();pick={start:Math.min(pick?.start??t,t),end:t};show();},
+      '[':()=>{const n=[...notes].reverse().find(x=>x.start<t-0.5);if(n)v.currentTime=n.start;},']':()=>{const n=notes.find(x=>x.start>t+0.5);if(n)v.currentTime=n.start;},
+      '+':()=>{zoom=Math.min(12,zoom*1.5);size();},'=':()=>{zoom=Math.min(12,zoom*1.5);size();},'-':()=>{zoom=Math.max(1,zoom/1.5);size();}}[k];
+    if(act){e.preventDefault();act();}});
+  window.onresize=size;size();render();
+  // The assistant writes replies into the same file; refresh every few seconds, never while typing.
+  setInterval(async()=>{if(document.activeElement===$('text'))return;const fresh=await (await fetch('/notes'+q)).json();if(JSON.stringify(fresh)!==JSON.stringify(notes)){notes=fresh;render();}},4000);}
+</script>
+</body>
+</html>

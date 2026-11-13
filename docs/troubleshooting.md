@@ -20,6 +20,8 @@
 
 **Non-English text shows missing characters.** The bundled typography is intended for English/Latin-script examples. Choose a font with the required glyph coverage in `reelkit/graphics.py`; retest wrapping and placement.
 
+**The review page shows no waveform.** The file has no audio track, or the bundled FFmpeg could not decode it. The page still plays the video and saves notes. Open the render or its folder with `python -m reelkit review PATH`; the page only serves videos inside that folder.
+
 **Rendering takes time.** Start with 540p previews. Portrait matting is slower; enable it after the layout is right. Disk use grows with saved working videos. Keep the source and the renders you need, then remove obsolete jobs from `.local/jobs/` yourself.
 
 **I downloaded the project but it cannot find footage.** Keep the original media and update the project path. JSON downloads contain settings, not copies of your source video.
