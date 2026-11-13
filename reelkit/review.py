@@ -4,6 +4,7 @@ Open a render in the browser, click the waveform for a moment or drag for a rang
 notes, fixes each one, writes a short "reply" and sets "done": true. Nothing leaves this computer.
 """
 from __future__ import annotations
+from array import array
 import json
 import math
 import mimetypes
@@ -12,6 +13,7 @@ from pathlib import Path
 import re
 import secrets
 import subprocess
+import sys
 import time
 from urllib.parse import parse_qs, unquote, urlparse
 import webbrowser
@@ -103,12 +105,15 @@ def peaks_for(render):
     raw = result.stdout
     if result.returncode or len(raw) < 4:
         return dict(duration=0, peaks=[])
-    import numpy as np
-    samples = np.frombuffer(raw, dtype="<i2")
+    samples = array("h"); samples.frombytes(raw[: len(raw) // 2 * 2])
+    if sys.byteorder != "little":
+        samples.byteswap()
     bucket = max(1, len(samples) // PEAK_COUNT)
-    usable = samples[: len(samples) // bucket * bucket]
-    peaks = np.abs(usable.reshape(-1, bucket)).max(axis=1) / 32768.0
-    return dict(duration=len(samples) / rate, peaks=[round(float(v), 3) for v in peaks])
+    peaks = []
+    for i in range(0, len(samples) - len(samples) % bucket, bucket):
+        chunk = samples[i:i + bucket]
+        peaks.append(round(max(abs(max(chunk)), abs(min(chunk))) / 32768.0, 3))
+    return dict(duration=len(samples) / rate, peaks=peaks)
 
 
 def renders_under(root):
