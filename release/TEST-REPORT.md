@@ -19,7 +19,7 @@ The archive builder includes only the documented source directories, scans text 
 
 ## Limits and pending external checks
 
-- The GitHub Actions workflow ran on 10 Nov 2026 (UTC) for the first push and the v0.1.0 tag and passed on ubuntu-latest, macos-latest, and windows-latest with Python 3.12: all unit and integration tests, plus the three demo renders. The Windows and Linux launcher scripts themselves have still only been exercised on macOS. Run [42769114029](https://github.com/bhavya-gx/astra-skills/actions/runs/42769114029) is the record.
+- The GitHub Actions workflow ran on 10 Nov 2026 (UTC) for the first push and the v0.1.0 tag and passed on ubuntu-latest, macos-latest, and windows-latest with Python 3.12: all unit and integration tests, plus the three demo renders. The Windows and Linux launcher scripts themselves have still only been exercised on macOS. Run [42769114029](https://github.com/bhavya-gx/video-skills/actions/runs/42769114029) is the record.
 - The GUI is a local starter, not a hosted multi-user service or a full timeline editor. No cloud deployment was performed.
 - Typography is designed around English/Latin-script examples. HDR input, unusual media, very long clips, and arbitrary non-Latin fonts need additional verification. The source limit is ten minutes; the browser upload limit is 600 MB.
 - Pause cutting is conservative. Automatic recognition, phrase-level SRT edits, matte edges, and subjective pacing still require review. Card timing defaults to five evenly spaced sections and is configurable.

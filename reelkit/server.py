@@ -122,7 +122,7 @@ def make_server(port=0,local=None):
 
 def serve(port=0,open_browser=True):
     server=make_server(port);url=f"http://127.0.0.1:{server.server_port}"
-    print(f"Astra Skills · {url}\nLeave this window open while editing. Press Ctrl+C to stop.",flush=True)
+    print(f"Video Skills · {url}\nLeave this window open while editing. Press Ctrl+C to stop.",flush=True)
     if open_browser:webbrowser.open(url)
     try:server.serve_forever()
     except KeyboardInterrupt:pass
