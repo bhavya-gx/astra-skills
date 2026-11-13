@@ -15,12 +15,19 @@ def main():
     new.add_argument("--template",default="founder-story");new.add_argument("--source",required=True);new.add_argument("--out",required=True)
     render=commands.add_parser("render",help="Render a project JSON file")
     render.add_argument("project");render.add_argument("--draft",action="store_true");render.add_argument("--out")
+    review=commands.add_parser("review",help="Open a render in the browser and leave timestamped notes")
+    review.add_argument("target",help="A rendered video, or a folder of renders");review.add_argument("--port",type=int,default=0);review.add_argument("--no-browser",action="store_true")
+    review.add_argument("--print",action="store_true",dest="print_notes",help="Print the open notes as text and exit");review.add_argument("--all",action="store_true",help="With --print, include notes marked done")
     demo=commands.add_parser("demo",help="Render illustrated previews without your own footage")
     demo.add_argument("--template",default="all");demo.add_argument("--out",default=str(ROOT/".local/demos"))
     args=parser.parse_args()
     if args.command=="serve":
         from .server import serve
         serve(args.port,not args.no_browser)
+    elif args.command=="review":
+        from .review import format_notes,serve_review
+        if args.print_notes:print(format_notes(args.target,args.all))
+        else:serve_review(args.target,args.port,not args.no_browser)
     elif args.command=="doctor":
         print(json.dumps(dict(ffmpeg=ffmpeg(),captions=bool(importlib.util.find_spec("faster_whisper")),portrait=bool(importlib.util.find_spec("onnxruntime"))),indent=2))
     else:
