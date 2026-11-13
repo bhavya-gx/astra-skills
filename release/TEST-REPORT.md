@@ -1,4 +1,14 @@
-# Verification report, v0.1.0
+# Verification report
+
+## v0.2.0 (13 November 2026)
+
+- 46 unit and integration tests pass with `REELKIT_INTEGRATION=1` on macOS arm64 (Python 3.14) and in GitHub Actions on ubuntu-latest, macos-latest and windows-latest with Python 3.12, for every pull request that produced this release (#11, #12, #13, #17, #18, #19, #20). The three demo renders ran on each.
+- New coverage: review notes cleaning, sorting and printing; library listing that skips work files; review server path confinement, origin and session-token checks and range playback; waveform peaks from a synthetic tone and an empty list for a silent file; repeat detection with and without cut positions; a still picture with a 1.2 s hole and quiet audio fails pauses, freezes and loudness; a moving picture with captions passes and reports uncaptioned sound when a caption is removed; a video with no audio fails the export check; the reference-script skill copies and manifests are byte-identical and its prompt and voice files exist.
+- The review page was exercised in a real browser against the three illustrated demos: library, review page, a note added from the page, a reply written to the file by hand and shown as done on the page.
+- The edit check was run on the three illustrated demos (they fail loudness, as expected for renders with no speech) and on the synthetic fixtures above.
+- Not covered: the review page and the check on footage longer than a few minutes, non-English captions in the repeat scan, and the Windows and Linux launchers, which have still only been exercised through CI, not by hand.
+
+## v0.1.0 (9 November 2026)
 
 Prepared 2026-11-09. This records checks actually completed during packaging; it is not a claim that every possible source or operating system has been tested.
 

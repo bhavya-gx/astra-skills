@@ -121,7 +121,7 @@ python3 bootstrap.py --check
 
 On Windows use `.venv\Scripts\python.exe`. `python3 bootstrap.py --lite` skips the speech and portrait dependencies. Code is in `reelkit/`, styles in `templates/`, renders go to `.local/` which Git ignores. Python 3.10+ required, 3.12+ recommended. SDR/Rec.709 input, English and Latin-script typography.
 
-Version 0.1.0 is a tested starter, not a general timeline editor. [Test evidence](release/TEST-REPORT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+Version 0.2.0 is a tested starter, not a general timeline editor. [Test evidence](release/TEST-REPORT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
 ## License and credits
 
