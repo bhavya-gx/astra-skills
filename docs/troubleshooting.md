@@ -20,6 +20,10 @@
 
 **Non-English text shows missing characters.** The bundled typography is intended for English/Latin-script examples. Choose a font with the required glyph coverage in `reelkit/graphics.py`; retest wrapping and placement.
 
+**The check fails on loudness for a quiet recording.** The renderer normalises dialogue to −16 LUFS, so a FAIL here usually means the file was not rendered by this toolkit or was re-encoded afterwards. Re-export from the project, or pass `--target-lufs` and `--tolerance` when checking a file made elsewhere.
+
+**The check reports a repeat that is intentional.** Repetition on purpose is fine. The check cannot tell; read the line and keep it. With `edit-decisions.json` beside the render the scan limits itself to the cuts, where accidental retakes live.
+
 **The review page shows no waveform.** The file has no audio track, or the bundled FFmpeg could not decode it. The page still plays the video and saves notes. Open the render or its folder with `python -m reelkit review PATH`; the page only serves videos inside that folder.
 
 **Rendering takes time.** Start with 540p previews. Portrait matting is slower; enable it after the layout is right. Disk use grows with saved working videos. Keep the source and the renders you need, then remove obsolete jobs from `.local/jobs/` yourself.
